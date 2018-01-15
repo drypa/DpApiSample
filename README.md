@@ -26,9 +26,6 @@ but there are some workaround, to not write full type definition(include full as
 
 ```csharp
 Configuration config = ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None);
-config.TypeStringTransformer = s =>
-{
-    return string.Join(",", s.Split(',').Take(2));
-};
+config.TypeStringTransformer = fullTypeName => string.Join(",", fullTypeName.Split(',').Take(2));
 ```
 but I think that is so dirty
